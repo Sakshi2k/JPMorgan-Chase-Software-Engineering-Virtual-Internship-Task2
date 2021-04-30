@@ -61,7 +61,7 @@ class Graph extends Component<IProps, {}> {
       // avoid inserting duplicated entries into Perspective table again.
       // console.log('this.props');
       // console.log(this.props);
-      const new_table = this.props.data.map((el: any) => {
+      this.table.update(this.props.data.map((el: any) => {
         // Format the data from ServerRespond to the schema
         return {
           stock: el.stock,
@@ -70,7 +70,7 @@ class Graph extends Component<IProps, {}> {
           timestamp: el.timestamp,
         };
       })
-      this.table.update(new_table);
+      );
     }
   }
 }
