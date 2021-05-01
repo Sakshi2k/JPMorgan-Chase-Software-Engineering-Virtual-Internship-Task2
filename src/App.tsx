@@ -49,7 +49,7 @@ class App extends Component<{}, IState> {
           this.setState({ data: serverResponds, showGraph:true});
         });
         countCalls++;
-        if(countCalls >1000)
+        if(countCalls > 1000)
         clearInterval(interval);
        }, 100);
   }
