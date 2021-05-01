@@ -27,7 +27,6 @@ class DataStreamer {
 
     request.onload = () => {
       if (request.status === 200) {
-        // console.log(JSON.parse(request.responseText));
         callback(JSON.parse(request.responseText));
       } else {
         alert ('Request failed');
