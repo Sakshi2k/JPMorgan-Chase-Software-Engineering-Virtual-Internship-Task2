@@ -42,14 +42,14 @@ class App extends Component<{}, IState> {
   getDataFromServer() {
     let countCalls=0;
     const interval = setInterval(() => {
-        DataStreamer.getData(async (serverResponds: ServerRespond[]) => {
+        DataStreamer.getData((serverResponds: ServerRespond[]) => {
           // Update the state by creating a new array of data that consists of
           // Previous data in the state and the new data from server
           // this.setState({ data: [...this.state.data, ...serverResponds] , showGraph:true});
           this.setState({ data: serverResponds, showGraph:true});
         });
         countCalls++;
-        if(countCalls >10)
+        if(countCalls >1000)
         clearInterval(interval);
        }, 100);
   }
@@ -65,12 +65,7 @@ class App extends Component<{}, IState> {
         </header>
         <div className="App-content">
           <button className="btn btn-primary Stream-button"
-            // when button is click, our react app tries to request
-            // new data from the server.
-            // As part of your task, update the getDataFromServer() function
-            // to keep requesting the data every 100ms until the app is closed
-            // or the server does not return anymore data.
-            // onClick={() => {this.setState({data : [...this.state.data], showGraph:true}); this.getDataFromServer();}}>
+            // when button is clicked, app requests new data from the server.
             onClick={() => {this.getDataFromServer();}}>
             Start Streaming Data
           </button>
