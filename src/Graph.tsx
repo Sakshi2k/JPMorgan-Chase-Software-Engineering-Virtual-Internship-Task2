@@ -52,15 +52,15 @@ class Graph extends Component<IProps, {}> {
 
       // Add more Perspective configurations here.
       elem.setAttribute('view','y_line');
-      elem.setAttribute('column-pivots','["stocks"]')
+      elem.setAttribute('column-pivots','["stock"]')
       elem.setAttribute('row-pivots','["timestamp"]')
       elem.setAttribute('columns','["top_ask_price"]');
-      elem.setAttribute('aggregates',`{
-          "stock" : "distinct_count",
-          "top_ask_price" : "avg",
-          "top_bid_price" : "avg",
-          "timestamp" : "distinct count"
-        }`);
+      elem.setAttribute('aggregates', JSON.stringify({
+          stock : "distinct_count",
+          top_ask_price : "avg",
+          top_bid_price : "avg",
+          timestamp : "distinct count"
+        }));
       
     }
   }
@@ -76,7 +76,7 @@ class Graph extends Component<IProps, {}> {
         return {
           stock: el.stock,
           top_ask_price: el.top_ask && el.top_ask.price || 0,
-          top_bid_price: el.top_bid && el.top_bid.price || 0,
+          // top_bid_price: el.top_bid && el.top_bid.price || 0,
           timestamp: el.timestamp,
         };
       })
